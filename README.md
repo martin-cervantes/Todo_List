@@ -1,5 +1,6 @@
 # Todo List
 
+In this project, we work more with classes and objects. And the introduction of a new lesson about OOP. The lesson shows the concepts of Single Responsibility and Tightly Coupled Objects.
 
 
 ![screenshot](./Screenshot.png)

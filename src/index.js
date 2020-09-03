@@ -13,7 +13,9 @@ import formProject1 from './js/form_project';
 import Project from './js/project';
 import Todo from './js/todo';
 
-const App = [];
+
+const App = JSON.parse(localStorage.getItem('appData')) || [];
+
 let currentProject = 0;
 
 window.changeTodosList = function (index) {
@@ -24,6 +26,8 @@ window.changeTodosList = function (index) {
 window.deleteProject = function (index) {
   App.splice(index, 1);
 
+  localStorage.setItem('appData', JSON.stringify(App));
+
   listProjects(App);
 
   listTodos(App, 0);
@@ -32,11 +36,15 @@ window.deleteProject = function (index) {
 window.deleteTodo = function (index) {
   App[currentProject].todos.splice(index, 1);
 
+  localStorage.setItem('appData', JSON.stringify(App));
+
   listTodos(App, currentProject);
 };
 
 window.toggleStatus = function (index) {
   App[currentProject].todos[index].toggleStatus();
+
+  localStorage.setItem('appData', JSON.stringify(App));
 };
 
 window.formProject = function () {
@@ -59,6 +67,8 @@ window.saveProject = function (title, desc) {
   const newProject = new Project(title, desc);
   App.push(newProject);
 
+  localStorage.setItem('appData', JSON.stringify(App));
+
   listProjects(App);
 
   listTodos(App, 0);
@@ -77,6 +87,8 @@ window.saveTodo = function (index, title, desc, dueDate, priority) {
     App[currentProject].todos[index].priority = priority;
   }
 
+  localStorage.setItem('appData', JSON.stringify(App));
+
   listTodos(App, currentProject);
 
   hideForm();
@@ -88,24 +100,26 @@ window.cancelForm = function () {
 
 /* testing */
 
-const project1 = new Project('Library', 'Library project');
-const project2 = new Project('Library2', 'Library project 2');
-
-const todo1 = new Todo('Models', 'Create models', '2020-08-10', '1', true);
-const todo2 = new Todo('Models 2', 'Create models', '2020-08-10', '1');
-
-const todo3 = new Todo('Models 3', 'Create models', '2020-08-10', '1', true);
-const todo4 = new Todo('Models 4', 'Create models', '2020-08-10', '1');
-
-
-project1.todos.push(todo1);
-project1.todos.push(todo2);
-
-project2.todos.push(todo3);
-project2.todos.push(todo4);
-
-App.push(project1);
-App.push(project2);
+// const project1 = new Project('Library', 'Library project');
+// const project2 = new Project('Library2', 'Library project 2');
+//
+// const todo1 = new Todo('Models', 'Create models', '2020-08-10', '1', true);
+// const todo2 = new Todo('Models 2', 'Create models', '2020-08-10', '1');
+//
+// const todo3 = new Todo('Models 3', 'Create models', '2020-08-10', '1', true);
+// const todo4 = new Todo('Models 4', 'Create models', '2020-08-10', '1');
+//
+//
+// project1.todos.push(todo1);
+// project1.todos.push(todo2);
+//
+// project2.todos.push(todo3);
+// project2.todos.push(todo4);
+//
+// App.push(project1);
+// App.push(project2);
+//
+// localStorage.setItem('appData', JSON.stringify(App));
 
 document.body.appendChild(content());
 

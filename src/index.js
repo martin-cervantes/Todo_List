@@ -98,29 +98,6 @@ window.cancelForm = function () {
   hideForm();
 };
 
-/* testing */
-
-// const project1 = new Project('Library', 'Library project');
-// const project2 = new Project('Library2', 'Library project 2');
-//
-// const todo1 = new Todo('Models', 'Create models', '2020-08-10', '1', true);
-// const todo2 = new Todo('Models 2', 'Create models', '2020-08-10', '1');
-//
-// const todo3 = new Todo('Models 3', 'Create models', '2020-08-10', '1', true);
-// const todo4 = new Todo('Models 4', 'Create models', '2020-08-10', '1');
-//
-//
-// project1.todos.push(todo1);
-// project1.todos.push(todo2);
-//
-// project2.todos.push(todo3);
-// project2.todos.push(todo4);
-//
-// App.push(project1);
-// App.push(project2);
-//
-// localStorage.setItem('appData', JSON.stringify(App));
-
 document.body.appendChild(content());
 
 listProjects(App);

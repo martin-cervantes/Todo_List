@@ -64,34 +64,42 @@ function hideForm() {
 }
 
 window.saveProject = function (title, desc) {
-  const newProject = new Project(title, desc);
-  App.push(newProject);
+  if (title !== '' && desc !== '') {
+    const newProject = new Project(title, desc);
+    App.push(newProject);
 
-  localStorage.setItem('appData', JSON.stringify(App));
+    localStorage.setItem('appData', JSON.stringify(App));
 
-  listProjects(App);
+    listProjects(App);
 
-  listTodos(App, 0);
+    listTodos(App, 0);
 
-  hideForm();
+    hideForm();
+  } else {
+    alert('Empty fields are not allowed');
+  }
 };
 
 window.saveTodo = function (index, title, desc, dueDate, priority) {
-  if (index === -1) {
-    const newTodo = new Todo(title, desc, dueDate, priority);
-    App[currentProject].todos.push(newTodo);
+  if (title !== '' && desc !== '' && dueDate !== '' && priority !== '') {
+    if (index === -1) {
+      const newTodo = new Todo(title, desc, dueDate, priority);
+      App[currentProject].todos.push(newTodo);
+    } else {
+      App[currentProject].todos[index].title = title;
+      App[currentProject].todos[index].desc = desc;
+      App[currentProject].todos[index].dueDate = dueDate;
+      App[currentProject].todos[index].priority = priority;
+    }
+
+    localStorage.setItem('appData', JSON.stringify(App));
+
+    listTodos(App, currentProject);
+
+    hideForm();
   } else {
-    App[currentProject].todos[index].title = title;
-    App[currentProject].todos[index].desc = desc;
-    App[currentProject].todos[index].dueDate = dueDate;
-    App[currentProject].todos[index].priority = priority;
+    alert('Empty fields are not allowed');
   }
-
-  localStorage.setItem('appData', JSON.stringify(App));
-
-  listTodos(App, currentProject);
-
-  hideForm();
 };
 
 window.cancelForm = function () {

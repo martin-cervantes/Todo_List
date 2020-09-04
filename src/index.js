@@ -63,8 +63,18 @@ function hideForm() {
   formContainer.classList.add('none');
 }
 
+function includes(value) {
+  for (let i = 0; i < App.length; i += 1) {
+    if (App[i].title === value) return true;
+  }
+
+  return false;
+}
+
 window.saveProject = function (title, desc) {
-  if (title !== '' && desc !== '') {
+  if (includes(title)) {
+    alert('There is a project with the same name');
+  } else if (title !== '' && desc !== '') {
     const newProject = new Project(title, desc);
     App.push(newProject);
 

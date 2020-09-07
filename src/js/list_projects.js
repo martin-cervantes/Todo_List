@@ -1,4 +1,4 @@
-const listProjects = (projects) => {
+const listProjects = (projects, current) => {
   const listProjects = document.getElementById('list_projects');
 
   listProjects.innerHTML = '';
@@ -6,6 +6,8 @@ const listProjects = (projects) => {
   projects.forEach((project, i) => {
     const p = document.createElement('div');
     p.classList.add('project');
+
+    if (current === i) p.classList.add('active');
 
     const a = document.createElement('a');
     a.setAttribute('href', '#');

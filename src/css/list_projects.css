@@ -23,3 +23,7 @@
   color: var(--red);
   text-decoration: none;
 }
+
+.active {
+  background-color: var(--orange);
+}

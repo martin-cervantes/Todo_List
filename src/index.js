@@ -21,6 +21,8 @@ let currentProject = 0;
 window.changeTodosList = function (index) {
   listTodos(App, index);
   currentProject = index;
+
+  listProjects(App, currentProject);
 };
 
 window.deleteProject = function (index) {
@@ -28,7 +30,7 @@ window.deleteProject = function (index) {
 
   localStorage.setItem('appData', JSON.stringify(App));
 
-  listProjects(App);
+  listProjects(App, currentProject);
 
   listTodos(App, 0);
 };
@@ -80,9 +82,9 @@ window.saveProject = function (title, desc) {
 
     localStorage.setItem('appData', JSON.stringify(App));
 
-    listProjects(App);
+    listProjects(App, currentProject);
 
-    listTodos(App, 0);
+    listTodos(App, currentProject);
 
     hideForm();
   } else {
@@ -106,6 +108,8 @@ window.saveTodo = function (index, title, desc, dueDate, priority) {
 
     listTodos(App, currentProject);
 
+    listProjects(App, currentProject);
+
     hideForm();
   } else {
     alert('Empty fields are not allowed');
@@ -118,6 +122,6 @@ window.cancelForm = function () {
 
 document.body.appendChild(content());
 
-listProjects(App);
+listProjects(App, currentProject);
 
 listTodos(App, currentProject);

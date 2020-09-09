@@ -3,13 +3,18 @@ const listTodos = (projects, index) => {
 
   listTodos.innerHTML = '';
 
-  if (projects.length > 0) {
-    const button = document.createElement('button');
-    button.id = 'new_project';
-    button.innerHTML = "New Activity <i class='far fa-plus-square'></i>";
-    button.setAttribute('onclick', 'window.formTodo()');
+  const button = document.createElement('button');
+  button.id = 'new_project';
+  button.innerHTML = "New Activity <i class='far fa-plus-square'></i>";
+  button.setAttribute('onclick', 'window.formTodo()');
 
-    listTodos.appendChild(button);
+  listTodos.appendChild(button);
+
+  if (projects.length > 0) {
+    const h1 = document.createElement('h1');
+    h1.innerText = projects[index].title;
+
+    listTodos.appendChild(h1);
 
     const table = document.createElement('table');
     const tableRow = document.createElement('tr');

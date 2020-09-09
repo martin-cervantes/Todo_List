@@ -20,10 +20,10 @@ const App = JSON.parse(localStorage.getItem('appData')) || [];
 let currentProject = 0;
 
 window.changeTodosList = function (index) {
-  listTodos(App, index);
   currentProject = index;
-
   listProjects(App, currentProject);
+
+  listTodos(App, index);
 };
 
 window.deleteProject = function (index) {
@@ -31,6 +31,7 @@ window.deleteProject = function (index) {
 
   localStorage.setItem('appData', JSON.stringify(App));
 
+  currentProject = 0;
   listProjects(App, currentProject);
 
   listTodos(App, 0);
@@ -83,6 +84,7 @@ window.saveProject = function (title, desc) {
 
     localStorage.setItem('appData', JSON.stringify(App));
 
+    currentProject = App.length - 1;
     listProjects(App, currentProject);
 
     listTodos(App, currentProject);
@@ -96,6 +98,11 @@ window.saveProject = function (title, desc) {
 window.saveTodo = function (index, title, desc, dueDate, priority) {
   if (title !== '' && desc !== '' && dueDate !== '' && priority !== '') {
     if (index === -1) {
+      if (App.length === 0) {
+        const newProject = new Project('Project 1', 'Default project');
+        App.push(newProject);
+      }
+
       const newTodo = new Todo(title, desc, dueDate, priority);
       App[currentProject].todos.push(newTodo);
     } else {

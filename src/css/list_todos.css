@@ -3,6 +3,11 @@
   width: 60rem;
 }
 
+h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
 table {
   font-size: 1.2rem;
   margin: 2rem;

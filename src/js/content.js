@@ -5,6 +5,13 @@ const content = () => {
 
   document.body.appendChild(pageTitle);
 
+  const message = document.createElement('div');
+  message.id = 'message';
+  message.innerText = 'Hola';
+  message.classList.add('none');
+
+  document.body.appendChild(message);
+
   const button = document.createElement('button');
   button.id = 'new_project';
   button.innerHTML = "New Project <i class='far fa-plus-square'></i>";

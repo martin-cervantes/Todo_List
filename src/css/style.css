@@ -15,6 +15,20 @@
   text-shadow: 0.2rem 0.2rem var(--yellow);
 }
 
+#message {
+  background-color: #fff;
+  border: var(--red) solid 0.01rem;
+  border-radius: 0.5rem;
+  color: var(--red);
+  left: 50%;
+  padding: 0.8rem 2rem;
+  position: absolute;
+  transform: translateX(-50%);
+  top: 2rem;
+  width: 25rem;
+  z-index: 5;
+}
+
 button {
   margin: 0.5rem;
 }

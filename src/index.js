@@ -9,6 +9,7 @@ import listProjects from './js/list_projects';
 import listTodos from './js/list_todos';
 import formTodo1 from './js/form_todo';
 import formProject1 from './js/form_project';
+import showMessage from './js/showMessage';
 
 import Project from './js/project';
 import Todo from './js/todo';
@@ -75,7 +76,7 @@ function includes(value) {
 
 window.saveProject = function (title, desc) {
   if (includes(title)) {
-    alert('There is a project with the same name');
+    showMessage('There is a project with the same name');
   } else if (title !== '' && desc !== '') {
     const newProject = new Project(title, desc);
     App.push(newProject);
@@ -88,7 +89,7 @@ window.saveProject = function (title, desc) {
 
     hideForm();
   } else {
-    alert('Empty fields are not allowed');
+    showMessage('Empty fields are not allowed');
   }
 };
 
@@ -112,7 +113,7 @@ window.saveTodo = function (index, title, desc, dueDate, priority) {
 
     hideForm();
   } else {
-    alert('Empty fields are not allowed');
+    showMessage('Empty fields are not allowed');
   }
 };
 

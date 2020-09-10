@@ -1,3 +1,5 @@
+import hideForm from './hide_form';
+
 const formProject = () => {
   const container = document.getElementById('container');
   container.classList.remove('none');
@@ -44,7 +46,7 @@ const formProject = () => {
   formProject.appendChild(save);
 
   const cancel = document.createElement('button');
-  cancel.setAttribute('onclick', 'window.cancelForm()');
+  cancel.onclick = hideForm;
   cancel.innerText = 'Cancel';
 
   formProject.appendChild(cancel);

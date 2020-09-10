@@ -1,3 +1,5 @@
+import formProject from './form_project';
+
 const content = () => {
   const pageTitle = document.createElement('h1');
   pageTitle.classList.add('page_title');
@@ -15,7 +17,7 @@ const content = () => {
   const button = document.createElement('button');
   button.id = 'new_project';
   button.innerHTML = "New Project <i class='far fa-plus-square'></i>";
-  button.setAttribute('onclick', 'window.formProject()');
+  button.onclick = formProject;
 
   document.body.appendChild(button);
 

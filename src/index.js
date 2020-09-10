@@ -8,7 +8,6 @@ import content from './js/content';
 import listProjects from './js/list_projects';
 import listTodos from './js/list_todos';
 import formTodo1 from './js/form_todo';
-import formProject1 from './js/form_project';
 import showMessage from './js/showMessage';
 
 import Project from './js/project';
@@ -17,10 +16,11 @@ import Todo from './js/todo';
 
 const App = JSON.parse(localStorage.getItem('appData')) || [];
 
-let currentProject = 0;
+let currentProject = parseInt(localStorage.getItem('currentProject'), 10) || 0;
 
 window.changeTodosList = function (index) {
   currentProject = index;
+  localStorage.setItem('currentProject', currentProject);
   listProjects(App, currentProject);
 
   listTodos(App, index);
@@ -32,6 +32,7 @@ window.deleteProject = function (index) {
   localStorage.setItem('appData', JSON.stringify(App));
 
   currentProject = 0;
+  localStorage.setItem('currentProject', currentProject);
   listProjects(App, currentProject);
 
   listTodos(App, 0);
@@ -51,29 +52,25 @@ window.toggleStatus = function (index) {
   localStorage.setItem('appData', JSON.stringify(App));
 };
 
-window.formProject = function () {
-  formProject1();
-};
-
 window.formTodo = function (index = -1) {
   formTodo1(App, currentProject, index);
 };
 
-function hideForm() {
+const hideForm = () => {
   const container = document.getElementById('container');
   container.classList.add('none');
 
   const formContainer = document.getElementById('form_container');
   formContainer.classList.add('none');
-}
+};
 
-function includes(value) {
+const includes = (value) => {
   for (let i = 0; i < App.length; i += 1) {
     if (App[i].title === value) return true;
   }
 
   return false;
-}
+};
 
 window.saveProject = function (title, desc) {
   if (includes(title)) {
@@ -85,6 +82,7 @@ window.saveProject = function (title, desc) {
     localStorage.setItem('appData', JSON.stringify(App));
 
     currentProject = App.length - 1;
+    localStorage.setItem('currentProject', currentProject);
     listProjects(App, currentProject);
 
     listTodos(App, currentProject);
@@ -122,10 +120,6 @@ window.saveTodo = function (index, title, desc, dueDate, priority) {
   } else {
     showMessage('Empty fields are not allowed');
   }
-};
-
-window.cancelForm = function () {
-  hideForm();
 };
 
 document.body.appendChild(content());

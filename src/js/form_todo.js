@@ -1,3 +1,5 @@
+import hideForm from './hide_form';
+
 const formTodo = (app, project, todo) => {
   const container = document.getElementById('container');
   container.classList.remove('none');
@@ -76,7 +78,7 @@ const formTodo = (app, project, todo) => {
   formTodo.appendChild(save);
 
   const cancel = document.createElement('button');
-  cancel.setAttribute('onclick', 'window.cancelForm()');
+  cancel.onclick = hideForm;
   cancel.innerText = 'Cancel';
 
   formTodo.appendChild(cancel);

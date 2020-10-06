@@ -14,7 +14,13 @@ import Project from './js/project';
 import Todo from './js/todo';
 
 
-const App = JSON.parse(localStorage.getItem('appData')) || [];
+const App = JSON.parse(localStorage.getItem('appData')) || [{
+  title: 'Project 1',
+  desc: 'Defult project',
+  todos: [{
+    title: 'Todo Title', desc: 'Todo description', dueDate: '2020-10-30', priority: '1', status: false,
+  }],
+}];
 
 let currentProject = parseInt(localStorage.getItem('currentProject'), 10) || 0;
 

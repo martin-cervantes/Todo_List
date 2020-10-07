@@ -1,0 +1,29 @@
+
+#list_projects {
+  border: 0.2rem solid var(--yellow);
+  min-height: calc(100vh - 10.5rem);
+  width: 15rem;
+}
+
+.project {
+  background-color: var(--yellow);
+  border: var(--red) solid 0.01rem;
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  padding: 0.8rem 0.5rem;
+  width: 13.9rem;
+}
+
+.project:hover {
+  background-color: var(--orange);
+}
+
+.project_link {
+  color: var(--red);
+  text-decoration: none;
+}
+
+.active {
+  background-color: var(--orange);
+}

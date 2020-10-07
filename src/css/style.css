@@ -1,0 +1,38 @@
+:root {
+  --red: #c22326;
+  --orange: #f37338;
+  --yellow: #fdb632;
+  --green: #027878;
+  --purple: #801638;
+}
+
+.page_title {
+  color: var(--orange);
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-decoration: underline var(--red);
+  text-shadow: 0.2rem 0.2rem var(--yellow);
+}
+
+#message {
+  background-color: #fff;
+  border: var(--red) solid 0.01rem;
+  border-radius: 0.5rem;
+  color: var(--red);
+  left: 50%;
+  padding: 0.8rem 2rem;
+  position: absolute;
+  transform: translateX(-50%);
+  top: 2rem;
+  width: 25rem;
+  z-index: 5;
+}
+
+button {
+  margin: 0.5rem;
+}
+
+.content {
+  display: flex;
+}
